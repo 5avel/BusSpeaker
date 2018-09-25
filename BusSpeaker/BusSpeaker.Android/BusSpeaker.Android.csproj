@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusSpeaker\BusSpeaker.csproj">
-      <Project>{C3557DA3-80C5-44A9-B8C0-E048D54C996E}</Project>
+      <Project>{398D2CD2-9C8D-4F1C-871D-8EAB0BEEE763}</Project>
       <Name>BusSpeaker</Name>
     </ProjectReference>
   </ItemGroup>
