@@ -11,15 +11,15 @@ namespace BusSpeaker.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public Rout Item { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
 
-            Item = new Item
+            Item = new Rout
             {
-                Text = "Item name",
+                Name = "Item name",
                 Description = "This is an item description."
             };
 

@@ -6,10 +6,10 @@ namespace BusSpeaker.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
-        public ItemDetailViewModel(Item item = null)
+        public Rout Item { get; set; }
+        public ItemDetailViewModel(Rout item = null)
         {
-            Title = item?.Text;
+            Title = item?.Name;
             Item = item;
         }
     }

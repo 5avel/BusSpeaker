@@ -6,21 +6,93 @@ using BusSpeaker.Models;
 
 namespace BusSpeaker.Services
 {
-    public class MockDataStore : IDataStore<Item>
+    public class MockDataStore : IDataStore<Rout>
     {
-        List<Item> items;
+        List<Rout> items;
 
         public MockDataStore()
         {
-            items = new List<Item>();
-            var mockItems = new List<Item>
+            items = new List<Rout>();
+            var mockItems = new List<Rout>
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." },
+                new Rout
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = "88",
+                    Description ="This is an item description.",
+                    IsDirectDirection = true,
+                    DirectDirectionPoints = new List<Point>
+                    {
+                        new Point
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Name = "Point B",
+                            IsVisited = false,
+                            Latitude = 0.0,
+                            Longitude = 0.0
+                        },
+                        new Point
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Name = "Point S",
+                            IsVisited = false,
+                            Latitude = 0.0,
+                            Longitude = 0.0
+                        },
+                        new Point
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Name = "Point D",
+                            IsVisited = false,
+                            Latitude = 0.0,
+                            Longitude = 0.0
+                        },
+                        new Point
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Name = "Point C",
+                            IsVisited = false,
+                            Latitude = 0.0,
+                            Longitude = 0.0
+                        }
+                    },
+                    ReverseDirectionPoints = new List<Point>
+                    {
+                        new Point
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Name = "Point C",
+                            IsVisited = false,
+                            Latitude = 0.0,
+                            Longitude = 0.0
+                        },
+                        new Point
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Name = "Point D",
+                            IsVisited = false,
+                            Latitude = 0.0,
+                            Longitude = 0.0
+                        },
+                        new Point
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Name = "Point S",
+                            IsVisited = false,
+                            Latitude = 0.0,
+                            Longitude = 0.0
+                        },
+                        new Point
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Name = "Point B",
+                            IsVisited = false,
+                            Latitude = 0.0,
+                            Longitude = 0.0
+                        },
+                    },
+
+                },
             };
 
             foreach (var item in mockItems)
@@ -29,16 +101,16 @@ namespace BusSpeaker.Services
             }
         }
 
-        public async Task<bool> AddItemAsync(Item item)
+        public async Task<bool> AddItemAsync(Rout item)
         {
             items.Add(item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Item item)
+        public async Task<bool> UpdateItemAsync(Rout item)
         {
-            var oldItem = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
+            var oldItem = items.Where((Rout arg) => arg.Id == item.Id).FirstOrDefault();
             items.Remove(oldItem);
             items.Add(item);
 
@@ -47,18 +119,18 @@ namespace BusSpeaker.Services
 
         public async Task<bool> DeleteItemAsync(string id)
         {
-            var oldItem = items.Where((Item arg) => arg.Id == id).FirstOrDefault();
+            var oldItem = items.Where((Rout arg) => arg.Id == id).FirstOrDefault();
             items.Remove(oldItem);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<Item> GetItemAsync(string id)
+        public async Task<Rout> GetItemAsync(string id)
         {
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Rout>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
         }

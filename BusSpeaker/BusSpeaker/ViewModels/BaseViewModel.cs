@@ -12,7 +12,7 @@ namespace BusSpeaker.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IDataStore<Rout> DataStore => DependencyService.Get<IDataStore<Rout>>() ?? new MockDataStore();
 
         bool isBusy = false;
         public bool IsBusy

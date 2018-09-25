@@ -24,9 +24,9 @@ namespace BusSpeaker.Views
         {
             InitializeComponent();
 
-            var item = new Item
+            var item = new Rout
             {
-                Text = "Item 1",
+                Name = "Item 1",
                 Description = "This is an item description."
             };
 
