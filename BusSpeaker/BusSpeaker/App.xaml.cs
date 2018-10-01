@@ -13,7 +13,6 @@ namespace BusSpeaker
         {
             InitializeComponent();
 
-
             MainPage = new MainPage();
         }
 

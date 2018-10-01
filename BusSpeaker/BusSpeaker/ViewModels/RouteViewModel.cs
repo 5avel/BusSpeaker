@@ -4,29 +4,31 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using System.Linq;
 
 using BusSpeaker.Models;
 using BusSpeaker.Views;
+using Point = BusSpeaker.Models.Point;
 
 namespace BusSpeaker.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class RouteViewModel : BaseViewModel
     {
-        public ObservableCollection<Rout> Items { get; set; }
+        public ObservableCollection<Point> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public ItemsViewModel()
+        public RouteViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Rout>();
+            Items = new ObservableCollection<Point>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Rout>(this, "AddItem", async (obj, item) =>
-            {
-                var newItem = item as Rout;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
-            });
+            //MessagingCenter.Subscribe<NewItemPage, Point>(this, "AddItem", async (obj, item) =>
+            //{
+            //    var newItem = item as Point;
+            //    Items.Add(newItem);
+            //    //await DataStore.AddItemAsync(newItem);
+            //});
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -39,7 +41,9 @@ namespace BusSpeaker.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                var routs = await DataStore.GetItemsAsync(true);
+                var rout = routs.First();
+                var items = rout.IsDirectDirection ? rout.DirectDirectionPoints : rout.ReverseDirectionPoints;
                 foreach (var item in items)
                 {
                     Items.Add(item);

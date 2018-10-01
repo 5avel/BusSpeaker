@@ -10,6 +10,8 @@ namespace BusSpeaker.Views
     {
         public MainPage()
         {
+
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
         }
     }

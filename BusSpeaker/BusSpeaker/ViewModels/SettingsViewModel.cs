@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace BusSpeaker.ViewModels
 {
-    public class AboutViewModel : BaseViewModel
+    public class SettingsViewModel : BaseViewModel
     {
-        public AboutViewModel()
+        public SettingsViewModel()
         {
             Title = "About";
 

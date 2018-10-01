@@ -6,11 +6,11 @@ using BusSpeaker.Models;
 
 namespace BusSpeaker.Services
 {
-    public class MockDataStore : IDataStore<Rout>
+    public class MockRouteStore : IRouteStore<Rout>
     {
         List<Rout> items;
 
-        public MockDataStore()
+        public MockRouteStore()
         {
             items = new List<Rout>();
             var mockItems = new List<Rout>
@@ -99,30 +99,6 @@ namespace BusSpeaker.Services
             {
                 items.Add(item);
             }
-        }
-
-        public async Task<bool> AddItemAsync(Rout item)
-        {
-            items.Add(item);
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<bool> UpdateItemAsync(Rout item)
-        {
-            var oldItem = items.Where((Rout arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(oldItem);
-            items.Add(item);
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<bool> DeleteItemAsync(string id)
-        {
-            var oldItem = items.Where((Rout arg) => arg.Id == id).FirstOrDefault();
-            items.Remove(oldItem);
-
-            return await Task.FromResult(true);
         }
 
         public async Task<Rout> GetItemAsync(string id)
