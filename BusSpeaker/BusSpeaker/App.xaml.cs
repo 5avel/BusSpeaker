@@ -11,7 +11,6 @@ namespace BusSpeaker
 
         public App()
         {
-            InitializeComponent();
 
             MainPage = new MainPage();
         }
