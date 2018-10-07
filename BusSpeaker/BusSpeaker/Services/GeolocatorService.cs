@@ -1,5 +1,6 @@
 ﻿using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
+using Plugin.Permissions.Abstractions;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -11,6 +12,10 @@ namespace BusSpeaker.Services
         public event EventHandler<PositionEventArgs> MyPositionChanged;
         public async Task StartListening()
         {
+            var hasPermission = await Utils.Utils.CheckPermissions(Permission.Location);
+            if (!hasPermission)
+                return;
+
             if (CrossGeolocator.Current.IsListening)
                 return;
 
