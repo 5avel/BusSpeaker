@@ -16,7 +16,7 @@ namespace BusSpeaker.ViewModels
         private double DelphinLon = 35.039755;
 
 
-        GeolocatorService _geolocatorService;
+        private GeolocatorService _geolocatorService;
         public SettingsViewModel()
         {
             Title = "About";

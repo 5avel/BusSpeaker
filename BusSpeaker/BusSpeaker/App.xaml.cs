@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using BusSpeaker.Views;
+using BusSpeaker.Services;
+using BusSpeaker.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace BusSpeaker
@@ -11,7 +13,13 @@ namespace BusSpeaker
 
         public App()
         {
+
+            
+
+
             InitializeComponent();
+
+            
 
             MainPage = new MainPage();
         }
