@@ -1,9 +1,8 @@
-﻿using System;
+﻿using BusSpeaker.PageModels;
+using FreshMvvm;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using BusSpeaker.Views;
-using BusSpeaker.Services;
-using BusSpeaker.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace BusSpeaker
@@ -13,15 +12,15 @@ namespace BusSpeaker
 
         public App()
         {
-
-            
-
-
             InitializeComponent();
 
-            
+            var tabbedNavigation = new FreshTabbedNavigationContainer(Guid.NewGuid().ToString());
 
-            MainPage = new MainPage();
+            tabbedNavigation.SetValue(NavigationPage.HasNavigationBarProperty, false);
+            tabbedNavigation.AddTab<RoutePageModel>("Route", null);
+            tabbedNavigation.AddTab<SettingsPageModel>("Settings", null);
+            MainPage = tabbedNavigation;
+            
         }
 
         protected override void OnStart()

@@ -17,10 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\RoutePage.xaml.cs">
+    <Compile Update="Pages\RoutePage.xaml.cs">
       <DependentUpon>RoutePage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\SettingsPage.xaml.cs">
+    <Compile Update="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -6,10 +6,11 @@ using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 
 using Xamarin.Forms;
+using FreshMvvm;
 
-namespace BusSpeaker.ViewModels
+namespace BusSpeaker.PageModels
 {
-    public class SettingsViewModel : BaseViewModel
+    public class SettingsPageModel : FreshBasePageModel
     {
 
         private double DelphinLat = 48.4601;
@@ -17,13 +18,10 @@ namespace BusSpeaker.ViewModels
 
 
         private GeolocatorService _geolocatorService;
-        public SettingsViewModel()
+        public SettingsPageModel()
         {
-            Title = "About";
-
             _geolocatorService = new GeolocatorService();
             _geolocatorService.MyPositionChanged += _geolocatorService_MyPositionChanged;
-
 
             StartNavigationCommand = new Command(async ()  => await _geolocatorService.StartListening());
             StopNavigationCommand = new Command(async () => await _geolocatorService.StopListening());
@@ -52,7 +50,7 @@ namespace BusSpeaker.ViewModels
                 if (latitude != value)
                 {
                     latitude = value;
-                    OnPropertyChanged();
+                    RaisePropertyChanged();
                 }
             }
         }
@@ -68,7 +66,7 @@ namespace BusSpeaker.ViewModels
                 if (longitude != value)
                 {
                     longitude = value;
-                    OnPropertyChanged();
+                    RaisePropertyChanged();
                 }
             }
         }
@@ -85,7 +83,7 @@ namespace BusSpeaker.ViewModels
                 if (distaceToDelphin != value)
                 {
                     distaceToDelphin = value;
-                    OnPropertyChanged();
+                    RaisePropertyChanged();
                 }
             }
         }
