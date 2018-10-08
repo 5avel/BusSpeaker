@@ -17,10 +17,10 @@ namespace BusSpeaker.PageModels
         private double DelphinLon = 35.039755;
 
 
-        private GeolocatorService _geolocatorService;
-        public SettingsPageModel()
+        private IGeolocatorService _geolocatorService;
+        public SettingsPageModel(IGeolocatorService geolocatorService)
         {
-            _geolocatorService = new GeolocatorService();
+            _geolocatorService = geolocatorService;
             _geolocatorService.MyPositionChanged += _geolocatorService_MyPositionChanged;
 
             StartNavigationCommand = new Command(async ()  => await _geolocatorService.StartListening());

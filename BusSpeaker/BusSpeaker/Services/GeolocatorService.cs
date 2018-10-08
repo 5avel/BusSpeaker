@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace BusSpeaker.Services
 {
-    public class GeolocatorService
+   
+    public class GeolocatorService : IGeolocatorService
     {
         public event EventHandler<PositionEventArgs> MyPositionChanged;
         public async Task StartListening()

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Point = BusSpeaker.Models.Point;
 using FreshMvvm;
+using BusSpeaker.Services;
+using BusSpeaker.Models;
+using System.Linq;
 
 namespace BusSpeaker.PageModels
 {
@@ -14,8 +17,11 @@ namespace BusSpeaker.PageModels
         public ObservableCollection<Point> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
-        public RoutePageModel()
+        private IRouteStore<Rout> _routeStore;
+
+        public RoutePageModel(IRouteStore<Rout> routeStore)
         {
+            _routeStore = routeStore;
             Items = new ObservableCollection<Point>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
@@ -27,18 +33,24 @@ namespace BusSpeaker.PageModels
             //});
         }
 
+        public override void Init(object initData)
+        {
+            // TODO: Use settings to resolve current state
+            Items = new ObservableCollection<Point>(_routeStore.GetItemsAsync(true).Result.First().DirectDirectionPoints);
+        }
+
         async Task ExecuteLoadItemsCommand()
         {
             try
             {
-                //Items.Clear();
-                //var routs = await DataStore.GetItemsAsync(true);
-                //var rout = routs.First();
-                //var items = rout.IsDirectDirection ? rout.DirectDirectionPoints : rout.ReverseDirectionPoints;
-                //foreach (var item in items)
-                //{
-                //    Items.Add(item);
-                //}
+                Items.Clear();
+                var routs = await _routeStore.GetItemsAsync(true);
+                var rout = routs.First();
+                var items = rout.IsDirectDirection ? rout.DirectDirectionPoints : rout.ReverseDirectionPoints;
+                foreach (var item in items)
+                {
+                    Items.Add(item);
+                }
             }
             catch (Exception ex)
             {
