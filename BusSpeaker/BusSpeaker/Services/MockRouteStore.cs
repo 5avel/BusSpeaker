@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BusSpeaker.Models;
+using BusSpeaker.Services.Intefaces;
 
 namespace BusSpeaker.Services
 {
-    public class MockRouteStore : IRouteStore<Rout>
+    public class MockRouteStore : IRouteStore
     {
         List<Rout> items;
 
@@ -25,7 +26,7 @@ namespace BusSpeaker.Services
                     {
                         new Point
                         {
-                            Id = Guid.NewGuid().ToString(),
+                            ID = 1,
                             Name = "Point B",
                             IsVisited = false,
                             Latitude = 0.0,
@@ -33,7 +34,7 @@ namespace BusSpeaker.Services
                         },
                         new Point
                         {
-                            Id = Guid.NewGuid().ToString(),
+                            ID = 2,
                             Name = "Point S",
                             IsVisited = false,
                             Latitude = 0.0,
@@ -41,7 +42,7 @@ namespace BusSpeaker.Services
                         },
                         new Point
                         {
-                            Id = Guid.NewGuid().ToString(),
+                            ID = 3,
                             Name = "Point D",
                             IsVisited = false,
                             Latitude = 0.0,
@@ -49,48 +50,48 @@ namespace BusSpeaker.Services
                         },
                         new Point
                         {
-                            Id = Guid.NewGuid().ToString(),
+                            ID = 4,
                             Name = "Point C",
                             IsVisited = false,
                             Latitude = 0.0,
                             Longitude = 0.0
                         }
                     },
-                    ReverseDirectionPoints = new List<Point>
-                    {
-                        new Point
-                        {
-                            Id = Guid.NewGuid().ToString(),
-                            Name = "Point C",
-                            IsVisited = false,
-                            Latitude = 0.0,
-                            Longitude = 0.0
-                        },
-                        new Point
-                        {
-                            Id = Guid.NewGuid().ToString(),
-                            Name = "Point D",
-                            IsVisited = false,
-                            Latitude = 0.0,
-                            Longitude = 0.0
-                        },
-                        new Point
-                        {
-                            Id = Guid.NewGuid().ToString(),
-                            Name = "Point S",
-                            IsVisited = false,
-                            Latitude = 0.0,
-                            Longitude = 0.0
-                        },
-                        new Point
-                        {
-                            Id = Guid.NewGuid().ToString(),
-                            Name = "Point B",
-                            IsVisited = false,
-                            Latitude = 0.0,
-                            Longitude = 0.0
-                        },
-                    },
+                    //ReverseDirectionPoints = new List<Point>
+                    //{
+                    //    new Point
+                    //    {
+                    //        Id = Guid.NewGuid().ToString(),
+                    //        Name = "Point C",
+                    //        IsVisited = false,
+                    //        Latitude = 0.0,
+                    //        Longitude = 0.0
+                    //    },
+                    //    new Point
+                    //    {
+                    //        Id = Guid.NewGuid().ToString(),
+                    //        Name = "Point D",
+                    //        IsVisited = false,
+                    //        Latitude = 0.0,
+                    //        Longitude = 0.0
+                    //    },
+                    //    new Point
+                    //    {
+                    //        Id = Guid.NewGuid().ToString(),
+                    //        Name = "Point S",
+                    //        IsVisited = false,
+                    //        Latitude = 0.0,
+                    //        Longitude = 0.0
+                    //    },
+                    //    new Point
+                    //    {
+                    //        Id = Guid.NewGuid().ToString(),
+                    //        Name = "Point B",
+                    //        IsVisited = false,
+                    //        Latitude = 0.0,
+                    //        Longitude = 0.0
+                    //    },
+                    //},
 
                 },
             };

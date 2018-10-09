@@ -7,6 +7,7 @@ using Plugin.Geolocator.Abstractions;
 
 using Xamarin.Forms;
 using FreshMvvm;
+using BusSpeaker.Services.Intefaces;
 
 namespace BusSpeaker.PageModels
 {

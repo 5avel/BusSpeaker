@@ -1,6 +1,7 @@
 ﻿using BusSpeaker.Models;
 using BusSpeaker.PageModels;
 using BusSpeaker.Services;
+using BusSpeaker.Services.Intefaces;
 using FreshMvvm;
 using System;
 using Xamarin.Forms;
@@ -11,15 +12,17 @@ namespace BusSpeaker
 {
     public partial class App : Application
     {
-
         public App()
         {
-            FreshIOC.Container.Register<IRouteStore<Rout>, MockRouteStore>();
+            FreshIOC.Container.Register<IRouteStore, SQLiteRouteStore>();
             FreshIOC.Container.Register<IGeolocatorService, GeolocatorService>();
 
             var tabbedNavigation = new FreshTabbedNavigationContainer(Guid.NewGuid().ToString());
-            tabbedNavigation.AddTab<RoutePageModel>("Route", null);
-            tabbedNavigation.AddTab<SettingsPageModel>("Settings", null);
+
+                tabbedNavigation.AddTab<RoutePageModel>("Route", null);
+                tabbedNavigation.AddTab<SettingsPageModel>("Settings", null);
+            
+            
             MainPage = tabbedNavigation;
             
         }

@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace BusSpeaker.Services
+namespace BusSpeaker.Services.Intefaces
 {
     public interface IGeolocatorService
     {

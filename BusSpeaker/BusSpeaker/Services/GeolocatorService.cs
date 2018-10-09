@@ -1,4 +1,5 @@
-﻿using Plugin.Geolocator;
+﻿using BusSpeaker.Services.Intefaces;
+using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using Plugin.Permissions.Abstractions;
 using System;
