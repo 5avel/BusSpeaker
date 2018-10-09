@@ -14,13 +14,13 @@ namespace BusSpeaker
     {
         public App()
         {
-            FreshIOC.Container.Register<IRouteStore, SQLiteRouteStore>();
+            //FreshIOC.Container.Register<IRouteStore, SQLiteRouteStore>();
             FreshIOC.Container.Register<IGeolocatorService, GeolocatorService>();
 
             var tabbedNavigation = new FreshTabbedNavigationContainer(Guid.NewGuid().ToString());
 
-                tabbedNavigation.AddTab<RoutePageModel>("Route", null);
-                tabbedNavigation.AddTab<SettingsPageModel>("Settings", null);
+            tabbedNavigation.AddTab<RoutePageModel>("Route", null);
+            tabbedNavigation.AddTab<SettingsPageModel>("Settings", null);
             
             
             MainPage = tabbedNavigation;

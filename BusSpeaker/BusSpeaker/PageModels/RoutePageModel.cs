@@ -9,14 +9,14 @@ namespace BusSpeaker.PageModels
 {
     public class RoutePageModel : FreshBasePageModel
     {
-        public ObservableCollection<Point> Items { get; set; }
+        public ObservableCollection<StopPoint> Items { get; set; }
 
         private IRouteStore _routeStore;
 
         public RoutePageModel(IRouteStore routeStore)
         {
             _routeStore = routeStore;
-            Items = new ObservableCollection<Point>();
+            Items = new ObservableCollection<StopPoint>();
         }
 
         public override void Init(object initData)
@@ -25,7 +25,7 @@ namespace BusSpeaker.PageModels
             var routes = _routeStore.GetItemsAsync(true).Result?.FirstOrDefault();
             if (routes != null && routes.DirectDirectionPoints != null)
             {
-                Items = new ObservableCollection<Point>(routes.DirectDirectionPoints);
+                Items = new ObservableCollection<StopPoint>(routes.DirectDirectionPoints);
             }
 
             //Items = new ObservableCollection<Point>(_routeStore.GetItemsAsync(true).Result.First().DirectDirectionPoints);
