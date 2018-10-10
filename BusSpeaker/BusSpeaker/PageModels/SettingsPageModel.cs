@@ -14,8 +14,8 @@ namespace BusSpeaker.PageModels
     public class SettingsPageModel : FreshBasePageModel
     {
 
-        private double DelphinLat = 48.4601;
-        private double DelphinLon = 35.039755;
+        private readonly double DelphinLat = 48.4601;
+        private readonly double DelphinLon = 35.039755;
 
 
         private IGeolocatorService _geolocatorService;

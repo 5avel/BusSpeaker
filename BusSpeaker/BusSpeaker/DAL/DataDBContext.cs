@@ -8,15 +8,17 @@ using Xamarin.Forms;
 
 namespace BusSpeaker.DAL
 {
-    public class DataDBContext : DbContext
+    public class DBContext : DbContext
     {
-        private readonly string dbName = "BusSpeaker.db3";
+        private readonly string dbName = "BusSpeakerDB.db3";
      
-        private string _databasePath;
+        private readonly string _databasePath;
 
-        public DataDBContext()
+        public DBContext()
         {
             _databasePath = DependencyService.Get<ISQLite>().GetDatabasePath(dbName);
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,20 +29,20 @@ namespace BusSpeaker.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Rout>().HasData(
-                new Rout { Id = 1, Name = "B2C", Description = "Test and smocking rout))" },
+                new Rout { Id = 1, Name = "BtoC", Description = "Test and smocking rout))" },
                 new Rout { Id = 2, Name = "88", Description = "Rout Dnipro 88" }
                 );
 
             modelBuilder.Entity<StopPoint>().HasData(
-                 new StopPoint { Id = 1, RoutId = 1, IsDirectDirection = true, Number = 1, Name = "Point B", Sound = "", Latitude = 0.0, Longitude = 0.0 },
-                 new StopPoint { Id = 2, RoutId = 1, IsDirectDirection = true, Number = 2, Name = "Point S", Sound = "", Latitude = 0.0, Longitude = 0.0 },
-                 new StopPoint { Id = 3, RoutId = 1, IsDirectDirection = true, Number = 3, Name = "Point D", Sound = "", Latitude = 0.0, Longitude = 0.0 },
-                 new StopPoint { Id = 4, RoutId = 1, IsDirectDirection = true, Number = 4, Name = "Point C", Sound = "", Latitude = 0.0, Longitude = 0.0 },
+                 new StopPoint { Id = 1, RoutId = 1, IsDirectDirection = true, Number = 1, Name = "Point D", Sound = "", Latitude = 48.4604083333333, Longitude = 35.0405266666667 },
+                 new StopPoint { Id = 2, RoutId = 1, IsDirectDirection = true, Number = 2, Name = "Point P", Sound = "", Latitude = 48.4601783333333, Longitude = 35.040885 },
+                 new StopPoint { Id = 3, RoutId = 1, IsDirectDirection = true, Number = 3, Name = "Point S", Sound = "", Latitude = 48.4599933333333, Longitude = 35.041395 },
+                 new StopPoint { Id = 4, RoutId = 1, IsDirectDirection = true, Number = 4, Name = "Point M", Sound = "", Latitude = 48.46007, Longitude = 35.0416216666667 },
 
-                 new StopPoint { Id = 5, RoutId = 1, IsDirectDirection = false, Number = 1, Name = "Point C", Sound = "", Latitude = 0.0, Longitude = 0.0 },
-                 new StopPoint { Id = 6, RoutId = 1, IsDirectDirection = false, Number = 2, Name = "Point D", Sound = "", Latitude = 0.0, Longitude = 0.0 },
-                 new StopPoint { Id = 7, RoutId = 1, IsDirectDirection = false, Number = 3, Name = "Point S", Sound = "", Latitude = 0.0, Longitude = 0.0 },
-                 new StopPoint { Id = 8, RoutId = 1, IsDirectDirection = false, Number = 4, Name = "Point B", Sound = "", Latitude = 0.0, Longitude = 0.0 }
+                 new StopPoint { Id = 5, RoutId = 1, IsDirectDirection = false, Number = 1, Name = "Point M", Sound = "", Latitude = 48.46007, Longitude = 35.0416216666667 },
+                 new StopPoint { Id = 6, RoutId = 1, IsDirectDirection = false, Number = 2, Name = "Point S", Sound = "", Latitude = 48.4599933333333, Longitude = 35.041395 },
+                 new StopPoint { Id = 7, RoutId = 1, IsDirectDirection = false, Number = 3, Name = "Point P", Sound = "", Latitude = 48.4601783333333, Longitude = 35.040885 },
+                 new StopPoint { Id = 8, RoutId = 1, IsDirectDirection = false, Number = 4, Name = "Point D", Sound = "", Latitude = 48.4604083333333, Longitude = 35.0405266666667 }
                 );
         }
 

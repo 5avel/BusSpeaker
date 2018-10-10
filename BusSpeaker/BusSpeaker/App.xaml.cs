@@ -1,8 +1,11 @@
-﻿using BusSpeaker.Models;
+﻿using BusSpeaker.DAL;
+using BusSpeaker.DAL.Intefaces;
+using BusSpeaker.Models;
 using BusSpeaker.PageModels;
 using BusSpeaker.Services;
 using BusSpeaker.Services.Intefaces;
 using FreshMvvm;
+using Microsoft.EntityFrameworkCore;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,7 +17,10 @@ namespace BusSpeaker
     {
         public App()
         {
-            //FreshIOC.Container.Register<IRouteStore, SQLiteRouteStore>();
+
+            FreshIOC.Container.Register<DbContext, DBContext>();
+            FreshIOC.Container.Register<IRoutRepository, RoutRepository>();
+
             FreshIOC.Container.Register<IGeolocatorService, GeolocatorService>();
 
             var tabbedNavigation = new FreshTabbedNavigationContainer(Guid.NewGuid().ToString());

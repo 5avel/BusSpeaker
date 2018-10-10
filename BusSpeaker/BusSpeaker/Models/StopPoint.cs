@@ -1,6 +1,7 @@
 ﻿
 
 using PropertyChanged;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BusSpeaker.Models
 {
@@ -20,6 +21,10 @@ namespace BusSpeaker.Models
         public string Sound { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public bool IsVisited { get; set; } // ignoring
+
+        [NotMapped]
+        public double Distance { get; set; }
+        [NotMapped]
+        public bool IsVisited { get; set; }
     }
 }
