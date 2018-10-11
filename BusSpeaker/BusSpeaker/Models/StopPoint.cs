@@ -22,6 +22,8 @@ namespace BusSpeaker.Models
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
+        public bool IsLastStopPoint { get; set; }
+
         [NotMapped]
         public double Distance { get; set; }
         [NotMapped]

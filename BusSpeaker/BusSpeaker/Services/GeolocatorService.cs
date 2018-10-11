@@ -11,7 +11,7 @@ namespace BusSpeaker.Services
    
     public class GeolocatorService : IGeolocatorService
     {
-        public event EventHandler<PositionEventArgs> MyPositionChanged;
+        public event EventHandler<PositionEventArgs> BusPositionChanged;
         public async Task StartListening()
         {
             var hasPermission = await Utils.Utils.CheckPermissions(Permission.Location);
@@ -30,7 +30,7 @@ namespace BusSpeaker.Services
 
         private void PositionChanged(object sender, PositionEventArgs e)
         {
-            MyPositionChanged?.Invoke(this, e);
+            BusPositionChanged?.Invoke(this, e);
         }
 
         private void PositionError(object sender, PositionErrorEventArgs e)

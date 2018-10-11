@@ -11,37 +11,18 @@ namespace BusSpeaker.PageModels
 {
     public class RoutePageModel : FreshBasePageModel
     {
-        public ObservableCollection<StopPoint> StopPoints { get; set; }
+        private IStopPointsService _stopPointsService;
 
-        private IRoutRepository _repository;
-        private IGeolocatorService _geolocator;
-
-        public RoutePageModel(IRoutRepository repository, IGeolocatorService geolocator)
+        public RoutePageModel(IStopPointsService stopPointsService)
         {
-            _repository = repository;
-            _geolocator = geolocator;
-            _geolocator.MyPositionChanged += _geolocator_MyPositionChanged;
-            StopPoints = new ObservableCollection<StopPoint>();
+            _stopPointsService = stopPointsService;
         }
-
-        private void _geolocator_MyPositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
+        public ObservableCollection<StopPoint> StopPoints
         {
-            for (int i = 0; i < StopPoints.Count; i++)
+            get
             {
-                StopPoints[i].Distance = GeolocatorUtils.CalculateDistance(StopPoints[i].Latitude, StopPoints[i].Longitude, e.Position.Latitude, e.Position.Longitude, GeolocatorUtils.DistanceUnits.Kilometers);
+                return _stopPointsService.StopPoints;
             }
         }
-
-        public override void Init(object initData)
-        {
-            // TODO: Use settings to resolve current state
-            var rout = _repository.GetRoutById(1);
-
-            if (rout != null)
-            {
-                StopPoints = new ObservableCollection<StopPoint>(rout.StopPoints.Where(p => p.IsDirectDirection == true));
-            }
-        }
-
     }
 }

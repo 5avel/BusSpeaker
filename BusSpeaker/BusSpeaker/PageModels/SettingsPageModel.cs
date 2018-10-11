@@ -22,13 +22,13 @@ namespace BusSpeaker.PageModels
         public SettingsPageModel(IGeolocatorService geolocatorService)
         {
             _geolocatorService = geolocatorService;
-            _geolocatorService.MyPositionChanged += _geolocatorService_MyPositionChanged;
+            _geolocatorService.BusPositionChanged += _geolocatorService_BusPositionChanged;
 
             StartNavigationCommand = new Command(async ()  => await _geolocatorService.StartListening());
             StopNavigationCommand = new Command(async () => await _geolocatorService.StopListening());
         }
 
-        private void _geolocatorService_MyPositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
+        private void _geolocatorService_BusPositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
         {
             DistaceToDelphin = GeolocatorUtils.CalculateDistance(DelphinLat, DelphinLon, e.Position.Latitude, e.Position.Longitude, GeolocatorUtils.DistanceUnits.Kilometers);
             Latitude = e.Position.Latitude;

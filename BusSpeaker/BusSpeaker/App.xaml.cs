@@ -1,6 +1,5 @@
 ﻿using BusSpeaker.DAL;
 using BusSpeaker.DAL.Intefaces;
-using BusSpeaker.Models;
 using BusSpeaker.PageModels;
 using BusSpeaker.Services;
 using BusSpeaker.Services.Intefaces;
@@ -20,8 +19,10 @@ namespace BusSpeaker
 
             FreshIOC.Container.Register<DbContext, DBContext>();
             FreshIOC.Container.Register<IRoutRepository, RoutRepository>();
+            FreshIOC.Container.Register<ISettingsRepository, SettingsRepository>();
 
             FreshIOC.Container.Register<IGeolocatorService, GeolocatorService>();
+            FreshIOC.Container.Register<IStopPointsService, StopPointsService>();
 
             var tabbedNavigation = new FreshTabbedNavigationContainer(Guid.NewGuid().ToString());
 
