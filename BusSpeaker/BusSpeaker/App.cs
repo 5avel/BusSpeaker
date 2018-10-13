@@ -28,10 +28,10 @@ namespace BusSpeaker
 
             tabbedNavigation.AddTab<RoutePageModel>("Route", null);
             tabbedNavigation.AddTab<SettingsPageModel>("Settings", null);
-            
-            
+
+
             MainPage = tabbedNavigation;
-            
+
         }
 
         protected override void OnStart()

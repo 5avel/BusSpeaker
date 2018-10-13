@@ -28,5 +28,8 @@ namespace BusSpeaker.Models
         public double Distance { get; set; }
         [NotMapped]
         public bool IsVisited { get; set; }
+        [NotMapped]
+        public bool IsCurrentStopPoint { get; set; }
+
     }
 }

@@ -56,14 +56,20 @@ namespace BusSpeaker.Services
                 StopPoints[i].Distance = GeolocatorUtils.CalculateDistance(StopPoints[i].Latitude, StopPoints[i].Longitude, 
                                                                 e.Position.Latitude, e.Position.Longitude, 
                                                                 GeolocatorUtils.DistanceUnits.Kilometers);
+
                 if (StopPoints[i].Distance < _settings.GetSettings().DinstanceToStopPoint)
                 {
+                    StopPoints[i].IsVisited = true;
+                    StopPoints[i].IsCurrentStopPoint = true;
+                    // TODO: Play StopsSound
                     if (StopPoints[i].IsLastStopPoint)
                     {
-                        ChengeDirection(!StopPoints[i].IsDirectDirection);
+                        ChengeDirection(!StopPoints[i].IsDirectDirection); // Reload direction
                     }
-                    // TODO: Play StopsSound
-
+                }
+                else
+                {
+                    StopPoints[i].IsCurrentStopPoint = false;
                 }
             }
 

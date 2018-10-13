@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:BusSpeaker.Converters"
              x:Class="BusSpeaker.Pages.RoutePage"
              x:Name="BrowseItemsPage" NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BooleanToCollorConverter x:Key="bool2Color"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="ItemsListView" 
@@ -16,15 +22,15 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Name}" 
-                       LineBreakMode="NoWrap" 
-                       Style="{DynamicResource ListItemTextStyle}" 
+                            <StackLayout Padding="10" BackgroundColor="{Binding IsCurrentStopPoint, Converter=bool2Color}">
+                                <Label Text="{Binding Name}" BackgroundColor="{Binding IsCurrentStopPoint, Converter=bool2Color}"
+                       LineBreakMode="NoWrap"  Style="{DynamicResource ListItemDetailTextStyle}"
                        FontSize="16" />
                                 <Label Text="{Binding Distance}" 
                        LineBreakMode="NoWrap"
                        Style="{DynamicResource ListItemDetailTextStyle}"
                        FontSize="13" />
+                                <Label Text="{Binding IsCurrentStopPoint}"  FontSize="13" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
