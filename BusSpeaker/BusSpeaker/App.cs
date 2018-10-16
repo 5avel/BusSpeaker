@@ -32,6 +32,7 @@ namespace BusSpeaker
 
             MainPage = tabbedNavigation;
 
+            
         }
 
         protected override void OnStart()
