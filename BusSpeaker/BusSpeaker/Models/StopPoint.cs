@@ -31,5 +31,7 @@ namespace BusSpeaker.Models
         [NotMapped]
         public bool IsCurrentStopPoint { get; set; }
 
+        // TODO: Add prop enum: State {NotVisted, Visted, Current}
+
     }
 }
