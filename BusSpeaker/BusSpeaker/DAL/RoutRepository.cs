@@ -22,7 +22,7 @@ namespace BusSpeaker.DAL
             throw new NotImplementedException();
         }
 
-        public  Rout GetRoutById(int id)
+        public Rout GetRoutById(int id)
         {
             return  _context.Routs
                 .Include(s => s.StopPoints)

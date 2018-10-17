@@ -10,6 +10,6 @@ namespace BusSpeaker.Services.Intefaces
     {
         ObservableCollection<StopPoint> StopPoints { get; set; }
 
-        void ChengeDirection(bool isDirectDirection);
+        void ChangeDirection(bool isDirectDirection);
     }
 }

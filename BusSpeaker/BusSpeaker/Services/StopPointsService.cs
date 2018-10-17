@@ -29,7 +29,7 @@ namespace BusSpeaker.Services
             StopPoints = new ObservableCollection<StopPoint>();
             _geolocator.BusPositionChanged += _geolocator_BusPositionChanged;
             LoadRout();
-            ChengeDirection(true);
+            ChangeDirection(true);
         }
 
         private void LoadRout()
@@ -37,7 +37,7 @@ namespace BusSpeaker.Services
             currentRout = _repository.GetRoutById(_settings.GetSettings().CurrentRoutId);
         }
 
-        public void ChengeDirection(bool isDirectDirection)
+        public void ChangeDirection(bool isDirectDirection)
         {
             currentDirection = isDirectDirection;
             StopPoints.Clear();
@@ -64,7 +64,7 @@ namespace BusSpeaker.Services
                     // TODO: Play StopsSound
                     if (StopPoints[i].IsLastStopPoint)
                     {
-                        ChengeDirection(!StopPoints[i].IsDirectDirection); // Reload direction
+                        ChangeDirection(!StopPoints[i].IsDirectDirection); // Reload direction
                     }
                 }
                 else

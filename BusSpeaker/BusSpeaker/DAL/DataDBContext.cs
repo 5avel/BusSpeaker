@@ -47,8 +47,6 @@ namespace BusSpeaker.DAL
         }
 
 
-
-
         public DbSet<Rout> Routs { get; set; }
         public DbSet<StopPoint> StopPoints { get; set; }
     }
