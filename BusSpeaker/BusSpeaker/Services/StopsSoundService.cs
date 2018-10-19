@@ -18,7 +18,11 @@ namespace BusSpeaker.Services
 
         public void PlaySound(string soundName)
         {
-            player.Load(GetStreamFromFile(soundName));
+            var stream = GetStreamFromFile(soundName);
+
+            if (stream == null) return;
+
+            player.Load(stream);
             player.Play();
         }
 
