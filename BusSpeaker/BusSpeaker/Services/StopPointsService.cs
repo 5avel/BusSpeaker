@@ -43,6 +43,7 @@ namespace BusSpeaker.Services
             StopPoints.Clear();
             foreach (var item in currentRout.StopPoints.Where(x => x.IsDirectDirection == currentDirection))
             {
+                item.State = 0;
                 StopPoints.Add(item);
             }
         }
@@ -59,8 +60,7 @@ namespace BusSpeaker.Services
 
                 if (StopPoints[i].Distance < _settings.GetSettings().DinstanceToStopPoint)
                 {
-                    StopPoints[i].IsVisited = true;
-                    StopPoints[i].IsCurrentStopPoint = true;
+                    StopPoints[i].State = StopPointState.Visited | StopPointState.Current;
                     // TODO: Play StopsSound
                     if (StopPoints[i].IsLastStopPoint)
                     {
@@ -69,7 +69,10 @@ namespace BusSpeaker.Services
                 }
                 else
                 {
-                    StopPoints[i].IsCurrentStopPoint = false;
+                    if (StopPoints[i].State.HasFlag(StopPointState.Current))
+                    {
+                        StopPoints[i].State ^= StopPointState.Current;
+                    }
                 }
             }
 

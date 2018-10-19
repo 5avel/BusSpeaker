@@ -27,11 +27,7 @@ namespace BusSpeaker.Models
         [NotMapped]
         public double Distance { get; set; }
         [NotMapped]
-        public bool IsVisited { get; set; }
-        [NotMapped]
-        public bool IsCurrentStopPoint { get; set; }
-
-        // TODO: Add prop enum: State {NotVisted, Visted, Current}
+        public StopPointState State { get; set; }
 
     }
 }

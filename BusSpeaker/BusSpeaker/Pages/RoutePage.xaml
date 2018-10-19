@@ -6,7 +6,7 @@
              x:Name="BrowseItemsPage" NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:BooleanToCollorConverter x:Key="bool2Color"/>
+          <converters:StopPointStateToColorConverter x:Key="StopPointState2Color"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -22,15 +22,15 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10" BackgroundColor="{Binding IsCurrentStopPoint, Converter={StaticResource bool2Color}}">
-                                <Label Text="{Binding Name}" BackgroundColor="{Binding IsCurrentStopPoint, Converter={StaticResource bool2Color}}"
+                            <StackLayout Padding="10" >
+                                <Label Text="{Binding Name}" BackgroundColor="{Binding State, Converter={StaticResource StopPointState2Color}}"
                        LineBreakMode="NoWrap"  Style="{DynamicResource ListItemDetailTextStyle}"
                        FontSize="16" />
                                 <Label Text="{Binding Distance}" 
                        LineBreakMode="NoWrap"
                        Style="{DynamicResource ListItemDetailTextStyle}"
                        FontSize="13" />
-                                <Label Text="{Binding IsCurrentStopPoint}"  FontSize="13" />
+                                <Label Text="{Binding State}"  FontSize="13" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
