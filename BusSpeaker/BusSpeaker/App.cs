@@ -23,6 +23,7 @@ namespace BusSpeaker
 
             FreshIOC.Container.Register<IGeolocatorService, GeolocatorService>();
             FreshIOC.Container.Register<IStopPointsService, StopPointsService>();
+            FreshIOC.Container.Register<IStopsSoundService, StopsSoundService>();
 
             var tabbedNavigation = new FreshTabbedNavigationContainer(Guid.NewGuid().ToString());
 

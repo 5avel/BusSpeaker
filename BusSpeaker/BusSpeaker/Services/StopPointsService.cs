@@ -15,17 +15,19 @@ namespace BusSpeaker.Services
         private IRoutRepository _repository;
         private IGeolocatorService _geolocator;
         private ISettingsRepository _settings;
+        private IStopsSoundService _soundService;
 
         private Rout currentRout;
         private bool currentDirection;
 
         public ObservableCollection<StopPoint> StopPoints { get; set; }
 
-        public StopPointsService(IRoutRepository repository, IGeolocatorService geolocator, ISettingsRepository settings)
+        public StopPointsService(IRoutRepository repository, IGeolocatorService geolocator, ISettingsRepository settings, IStopsSoundService soundService)
         {
             _repository = repository;
             _geolocator = geolocator;
             _settings = settings;
+            _soundService = soundService;
             StopPoints = new ObservableCollection<StopPoint>();
             _geolocator.BusPositionChanged += _geolocator_BusPositionChanged;
             LoadRout();
@@ -60,8 +62,13 @@ namespace BusSpeaker.Services
 
                 if (StopPoints[i].Distance < _settings.GetSettings().DinstanceToStopPoint)
                 {
+                    if(StopPoints[i].State.HasFlag(StopPointState.Visited) == false)
+                    {
+                        _soundService.PlaySound($"{currentRout.Name}.{StopPoints[i].Sound}");
+                    }
+
                     StopPoints[i].State = StopPointState.Visited | StopPointState.Current;
-                    // TODO: Play StopsSound
+                    
                     if (StopPoints[i].IsLastStopPoint)
                     {
                         ChangeDirection(!StopPoints[i].IsDirectDirection); // Reload direction

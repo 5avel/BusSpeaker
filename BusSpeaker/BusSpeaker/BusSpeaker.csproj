@@ -10,11 +10,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="StopSounds\1_1.mp3" />
+    <None Remove="StopSounds\1_2.mp3" />
+    <None Remove="StopSounds\1_3.mp3" />
+    <None Remove="StopSounds\1_4.mp3" />
+    <None Remove="StopSounds\2_1.mp3" />
+    <None Remove="StopSounds\2_2.mp3" />
+    <None Remove="StopSounds\2_3.mp3" />
+    <None Remove="StopSounds\2_4.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="StopSounds\BtoC\1_1.mp3" />
+    <EmbeddedResource Include="StopSounds\BtoC\1_2.mp3" />
+    <EmbeddedResource Include="StopSounds\BtoC\1_3.mp3" />
+    <EmbeddedResource Include="StopSounds\BtoC\1_4.mp3" />
+    <EmbeddedResource Include="StopSounds\BtoC\2_1.mp3" />
+    <EmbeddedResource Include="StopSounds\BtoC\2_2.mp3" />
+    <EmbeddedResource Include="StopSounds\BtoC\2_3.mp3" />
+    <EmbeddedResource Include="StopSounds\BtoC\2_4.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FreshMvvm" Version="2.2.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.4" />
     <PackageReference Include="PropertyChanged.Fody" Version="2.5.13" />
     <PackageReference Include="System.Buffers" Version="4.5.0" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.1.0" />
     <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />  
     <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
   </ItemGroup>
@@ -28,6 +51,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="StopSounds\88\" />
     <Folder Include="Utils\" />
   </ItemGroup>
 </Project>

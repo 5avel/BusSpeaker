@@ -17,7 +17,7 @@ namespace BusSpeaker.DAL
         public DBContext()
         {
             _databasePath = DependencyService.Get<ISQLite>().GetDatabasePath(dbName);
-           // Database.EnsureDeleted();
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -34,15 +34,15 @@ namespace BusSpeaker.DAL
                 );
 
             modelBuilder.Entity<StopPoint>().HasData(
-                 new StopPoint { Id = 1, RoutId = 1, IsDirectDirection = true, IsLastStopPoint = false, Number = 1, Name = "Point D", Sound = "", Latitude = 48.4604083333333, Longitude = 35.0405266666667 },
-                 new StopPoint { Id = 2, RoutId = 1, IsDirectDirection = true, IsLastStopPoint = false, Number = 2, Name = "Point P", Sound = "", Latitude = 48.4601783333333, Longitude = 35.040885 },
-                 new StopPoint { Id = 3, RoutId = 1, IsDirectDirection = true, IsLastStopPoint = false, Number = 3, Name = "Point S", Sound = "", Latitude = 48.4599933333333, Longitude = 35.041395 },
-                 new StopPoint { Id = 4, RoutId = 1, IsDirectDirection = true, IsLastStopPoint = true, Number = 4, Name = "Point M", Sound = "", Latitude = 48.46007, Longitude = 35.0416216666667 },
+                 new StopPoint { Id = 1, RoutId = 1, IsDirectDirection = true, IsLastStopPoint = false, Number = 1, Name = "Point D", Sound = "1_1.mp3", Latitude = 48.4604083333333, Longitude = 35.0405266666667 },
+                 new StopPoint { Id = 2, RoutId = 1, IsDirectDirection = true, IsLastStopPoint = false, Number = 2, Name = "Point P", Sound = "1_2.mp3", Latitude = 48.4601783333333, Longitude = 35.040885 },
+                 new StopPoint { Id = 3, RoutId = 1, IsDirectDirection = true, IsLastStopPoint = false, Number = 3, Name = "Point S", Sound = "1_3.mp3", Latitude = 48.4599933333333, Longitude = 35.041395 },
+                 new StopPoint { Id = 4, RoutId = 1, IsDirectDirection = true, IsLastStopPoint = true, Number = 4, Name = "Point M", Sound = "1_4.mp3", Latitude = 48.46007, Longitude = 35.0416216666667 },
 
-                 new StopPoint { Id = 5, RoutId = 1, IsDirectDirection = false, IsLastStopPoint = false, Number = 1, Name = "Point M", Sound = "", Latitude = 48.46007, Longitude = 35.0416216666667 },
-                 new StopPoint { Id = 6, RoutId = 1, IsDirectDirection = false, IsLastStopPoint = false, Number = 2, Name = "Point S", Sound = "", Latitude = 48.4599933333333, Longitude = 35.041395 },
-                 new StopPoint { Id = 7, RoutId = 1, IsDirectDirection = false, IsLastStopPoint = false, Number = 3, Name = "Point P", Sound = "", Latitude = 48.4601783333333, Longitude = 35.040885 },
-                 new StopPoint { Id = 8, RoutId = 1, IsDirectDirection = false, IsLastStopPoint = true, Number = 4, Name = "Point D", Sound = "", Latitude = 48.4604083333333, Longitude = 35.0405266666667 }
+                 new StopPoint { Id = 5, RoutId = 1, IsDirectDirection = false, IsLastStopPoint = false, Number = 1, Name = "Point M", Sound = "2_1.mp3", Latitude = 48.46007, Longitude = 35.0416216666667 },
+                 new StopPoint { Id = 6, RoutId = 1, IsDirectDirection = false, IsLastStopPoint = false, Number = 2, Name = "Point S", Sound = "2_2.mp3", Latitude = 48.4599933333333, Longitude = 35.041395 },
+                 new StopPoint { Id = 7, RoutId = 1, IsDirectDirection = false, IsLastStopPoint = false, Number = 3, Name = "Point P", Sound = "2_3.mp3", Latitude = 48.4601783333333, Longitude = 35.040885 },
+                 new StopPoint { Id = 8, RoutId = 1, IsDirectDirection = false, IsLastStopPoint = true, Number = 4, Name = "Point D", Sound = "2_4.mp3", Latitude = 48.4604083333333, Longitude = 35.0405266666667 }
                 );
         }
 
