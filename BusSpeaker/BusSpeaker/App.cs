@@ -5,6 +5,7 @@ using BusSpeaker.Services;
 using BusSpeaker.Services.Intefaces;
 using FreshMvvm;
 using Microsoft.EntityFrameworkCore;
+using Plugin.SimpleAudioPlayer;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -24,6 +25,8 @@ namespace BusSpeaker
             FreshIOC.Container.Register<IGeolocatorService, GeolocatorService>();
             FreshIOC.Container.Register<IStopPointsService, StopPointsService>();
             FreshIOC.Container.Register<IStopsSoundService, StopsSoundService>();
+
+            FreshIOC.Container.Register<ISimpleAudioPlayer>(CrossSimpleAudioPlayer.Current);
 
             var tabbedNavigation = new FreshTabbedNavigationContainer(Guid.NewGuid().ToString());
 

@@ -10,10 +10,10 @@ namespace BusSpeaker.Services
 {
     public class StopsSoundService : IStopsSoundService
     {
-        private ISimpleAudioPlayer player;
-        public StopsSoundService()
+        private ISimpleAudioPlayer _player;
+        public StopsSoundService(ISimpleAudioPlayer player)
         {
-            player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            _player = player;
         }
 
         public void PlaySound(string soundName)
@@ -22,8 +22,8 @@ namespace BusSpeaker.Services
 
             if (stream == null) return;
 
-            player.Load(stream);
-            player.Play();
+            _player.Load(stream);
+            _player.Play();
         }
 
         private Stream GetStreamFromFile(string filename)
