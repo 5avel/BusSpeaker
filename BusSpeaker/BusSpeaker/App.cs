@@ -31,6 +31,7 @@ namespace BusSpeaker
             var tabbedNavigation = new FreshTabbedNavigationContainer(Guid.NewGuid().ToString());
 
             tabbedNavigation.AddTab<RoutePageModel>("Route", null);
+            tabbedNavigation.AddTab<MapPageModel>("Map", null);
             tabbedNavigation.AddTab<SettingsPageModel>("Settings", null);
 
 
