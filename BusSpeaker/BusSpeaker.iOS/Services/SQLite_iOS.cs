@@ -19,8 +19,8 @@ namespace BusSpeaker.iOS.Services
         {
             // определяем путь к бд
             string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            //string libraryPath = Path.Combine(documentsPath, "..", "Library"); // папка библиотеки
-            var path = Path.Combine(documentsPath, sqliteFilename);
+            string libraryPath = Path.Combine(documentsPath, "..", "Library"); // папка библиотеки
+            var path = Path.Combine(libraryPath, sqliteFilename);
 
             return path;
         }

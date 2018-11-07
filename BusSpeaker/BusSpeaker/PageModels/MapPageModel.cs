@@ -15,52 +15,49 @@ namespace BusSpeaker.PageModels
     public class MapPageModel : FreshBasePageModel
     {
         private readonly IStopPointsService _stopPointsService;
+        private readonly IGeolocatorService _geolocator;
 
-        private MapPageModel()
-        {
+        // TODO Add directionChanged event and clean Pins collection
 
-        }
-
-        public MapPageModel(IStopPointsService stopPointsService)
+        public MapPageModel(IStopPointsService stopPointsService, IGeolocatorService geolocator)
         {
             _stopPointsService = stopPointsService;
-            Pins = new ObservableCollection<Pin>();
-
-            Pins.Add(
-                new Pin
-                {
-                    Label = "Test Point",
-                    Position = new Position(48.4604083333333, 35.0405266666667),
-                }
-            );
-
-            Pins.Add(
-               new Pin
-               {
-                   Label = "Test Point",
-                   Position = new Position(35.0405266666667, 48.4604083333333)
-               }
-           );
+            _geolocator = geolocator;
+            _geolocator.BusPositionChanged += _geolocator_BusPositionChanged;
         }
 
-        public ObservableCollection<Pin> Pins { get; set; }
+        void _geolocator_BusPositionChanged(object sender, PositionEventArgs e)
+        {
+            if(Pins.Count == 0)
+            {
+                foreach(var point in _stopPointsService.StopPoints)
+                {
+                    Pins.Add(
+                        new Pin
+                        {
+                            Label = point.Name,
+                            Position = new Position(point.Latitude, point.Longitude)
+                        
+                        }
+                    );
+                }
+            }
+        }
 
-        public Command<MapClickedEventArgs> MapClickedCommand =>
-           new Command<MapClickedEventArgs>(args =>
-           {
-               Pins.Add(new Pin
-               {
-                   Label = $"Pin{Pins.Count}",
-                   Position = args.Point
-               });
 
-               Pins.Add(
-              new Pin
-              {
-                  Label = "Test Point",
-                  Position = new Position(48.4604083333333, 35.0405266666667)
-              }
-          );
-           });
+        private ObservableCollection<Pin> _pins = new ObservableCollection<Pin>();
+
+        public ObservableCollection<Pin> Pins { 
+            set{
+                _pins = value;
+            }
+            get
+            {
+           
+                return _pins;
+            }
+        }
+
+      
     }
 }
