@@ -9,6 +9,7 @@ using Plugin.Geolocator.Abstractions;
 using Xamarin.Forms.GoogleMaps;
 using Position = Xamarin.Forms.GoogleMaps.Position;
 using Xamarin.Forms;
+using Xamarin.Forms.GoogleMaps.Bindings;
 
 namespace BusSpeaker.PageModels
 {
@@ -46,9 +47,17 @@ namespace BusSpeaker.PageModels
                     );
                 }
             }
+            MoveCameraRequest.MoveCamera(CameraUpdateFactory.NewCameraPosition(
+                new CameraPosition(
+                    new Position(e.Position.Latitude, e.Position.Longitude), 
+                    17d, // zoom
+                    45d, // bearing(rotation)
+                    60d // tilt
+                )));
         }
 
         public ObservableCollection<Pin> Pins { set; get; } = new ObservableCollection<Pin>();
+        public MoveCameraRequest MoveCameraRequest { get; } = new MoveCameraRequest();
 
 
     }

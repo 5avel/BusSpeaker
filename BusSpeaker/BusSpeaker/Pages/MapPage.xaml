@@ -9,6 +9,7 @@
             <googleMaps:Map  MyLocationEnabled="true">
                 <googleMaps:Map.Behaviors>
                     <bindings:BindingPinsBehavior Value="{Binding Pins}"/>
+                    <bindings:MoveCameraBehavior Request="{Binding MoveCameraRequest}"/>
                 </googleMaps:Map.Behaviors>
             </googleMaps:Map>
 
