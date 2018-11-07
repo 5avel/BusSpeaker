@@ -44,20 +44,8 @@ namespace BusSpeaker.PageModels
             }
         }
 
+        public ObservableCollection<Pin> Pins { set; get; } = new ObservableCollection<Pin>();
 
-        private ObservableCollection<Pin> _pins = new ObservableCollection<Pin>();
 
-        public ObservableCollection<Pin> Pins { 
-            set{
-                _pins = value;
-            }
-            get
-            {
-           
-                return _pins;
-            }
-        }
-
-      
     }
 }
