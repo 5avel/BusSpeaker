@@ -17,13 +17,17 @@ namespace BusSpeaker.PageModels
         private readonly IStopPointsService _stopPointsService;
         private readonly IGeolocatorService _geolocator;
 
-        // TODO Add directionChanged event and clean Pins collection
-
         public MapPageModel(IStopPointsService stopPointsService, IGeolocatorService geolocator)
         {
             _stopPointsService = stopPointsService;
             _geolocator = geolocator;
             _geolocator.BusPositionChanged += _geolocator_BusPositionChanged;
+            _stopPointsService.DirectionChanged += _stopPointsService_DirectionChanged;
+        }
+
+        private void _stopPointsService_DirectionChanged(object sender, EventArgs e)
+        {
+            Pins.Clear();
         }
 
         void _geolocator_BusPositionChanged(object sender, PositionEventArgs e)

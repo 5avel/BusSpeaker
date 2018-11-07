@@ -20,6 +20,7 @@ namespace BusSpeaker.Services
         private Rout currentRout;
         private bool currentDirection;
 
+        public event EventHandler<EventArgs> DirectionChanged;
         public ObservableCollection<StopPoint> StopPoints { get; set; }
 
         public StopPointsService(IRoutRepository repository, IGeolocatorService geolocator, ISettingsRepository settings, IStopsSoundService soundService)
@@ -72,6 +73,7 @@ namespace BusSpeaker.Services
                     if (StopPoints[i].IsLastStopPoint)
                     {
                         ChangeDirection(!StopPoints[i].IsDirectDirection); // Reload direction
+                        DirectionChanged?.Invoke(this, new EventArgs());
                     }
                 }
                 else
