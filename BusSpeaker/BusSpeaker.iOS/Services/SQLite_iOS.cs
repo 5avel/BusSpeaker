@@ -17,10 +17,7 @@ namespace BusSpeaker.iOS.Services
         public SQLite_iOS() { }
         public string GetDatabasePath(string sqliteFilename)
         {
-            // определяем путь к бд
-            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            string libraryPath = Path.Combine(documentsPath, "..", "Library"); // папка библиотеки
-            var path = Path.Combine(libraryPath, sqliteFilename);
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library", sqliteFilename);
 
             return path;
         }
