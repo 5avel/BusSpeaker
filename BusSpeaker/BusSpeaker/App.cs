@@ -18,6 +18,7 @@ namespace BusSpeaker
         public App()
         {
 
+
             FreshIOC.Container.Register<DbContext, DBContext>();
             FreshIOC.Container.Register<IRoutRepository, RoutRepository>();
             FreshIOC.Container.Register<ISettingsRepository, SettingsRepository>();
@@ -30,7 +31,7 @@ namespace BusSpeaker
 
             var tabbedNavigation = new FreshTabbedNavigationContainer(Guid.NewGuid().ToString());
 
-            tabbedNavigation.AddTab<RoutePageModel>("Route", null);
+            tabbedNavigation.AddTab<RoutePageModel>("Route", null); // ios exeption
             tabbedNavigation.AddTab<MapPageModel>("Map", null);
             tabbedNavigation.AddTab<SettingsPageModel>("Settings", null);
 

@@ -33,7 +33,6 @@
 
   <ItemGroup>
     <PackageReference Include="FreshMvvm" Version="2.2.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />
     <PackageReference Include="PropertyChanged.Fody" Version="2.6.0" />
     <PackageReference Include="System.Buffers" Version="4.5.0" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
@@ -42,6 +41,7 @@
     <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />  
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.0.4" />  
     <PackageReference Include="Xamarin.Forms.GoogleMaps.Bindings" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>

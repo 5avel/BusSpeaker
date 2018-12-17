@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using FreshMvvm;
+﻿using System.Collections.ObjectModel;
 using BusSpeaker.Models;
-using System.Linq;
 using BusSpeaker.Services.Intefaces;
-using BusSpeaker.DAL.Intefaces;
-using Plugin.Geolocator.Abstractions;
+using FreshMvvm;
 
 namespace BusSpeaker.PageModels
 {
