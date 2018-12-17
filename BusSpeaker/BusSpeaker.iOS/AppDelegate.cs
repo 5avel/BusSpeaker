@@ -23,8 +23,10 @@ namespace BusSpeaker.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            Xamarin.FormsGoogleMaps.Init("AIzaSyAW-NW1G_KPtl1exwZj4P_JzqPibBDJN4U");
+           
             LoadApplication(new App());
+
+           
 
             return base.FinishedLaunching(app, options);
         }
