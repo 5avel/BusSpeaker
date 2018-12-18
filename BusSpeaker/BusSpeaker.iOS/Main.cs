@@ -15,7 +15,7 @@ namespace BusSpeaker.iOS
 
             SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_sqlite3());
 
-
+            SQLitePCL.Batteries.Init();
             Xamarin.FormsGoogleMaps.Init("AIzaSyAW-NW1G_KPtl1exwZj4P_JzqPibBDJN4U");
 
 
