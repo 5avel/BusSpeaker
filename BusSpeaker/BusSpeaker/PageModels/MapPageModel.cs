@@ -24,7 +24,6 @@ namespace BusSpeaker.PageModels
             _geolocator = geolocator;
             _geolocator.BusPositionChanged += _geolocator_BusPositionChanged;
             _stopPointsService.DirectionChanged += _stopPointsService_DirectionChanged;
-            
         }
 
         private void _stopPointsService_DirectionChanged(object sender, EventArgs e)

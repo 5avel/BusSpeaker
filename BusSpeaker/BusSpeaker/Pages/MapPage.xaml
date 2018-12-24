@@ -4,6 +4,7 @@
              xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
              x:Class="BusSpeaker.Pages.MapPage" NavigationPage.HasNavigationBar="False">
+    
     <ContentPage.Content>
         <StackLayout>
             <googleMaps:Map  MyLocationEnabled="true">
