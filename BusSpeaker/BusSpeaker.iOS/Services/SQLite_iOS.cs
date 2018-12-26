@@ -18,6 +18,7 @@ namespace BusSpeaker.iOS.Services
         public string GetDatabasePath(string sqliteFilename)
         {
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library", sqliteFilename);
+         //databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library", databaseName);
 
             return path;
         }

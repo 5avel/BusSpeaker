@@ -33,16 +33,16 @@ namespace BusSpeaker.PageModels
 
         void _geolocator_BusPositionChanged(object sender, PositionEventArgs e)
         {
-            if(Pins.Count == 0)
+            if (Pins.Count == 0)
             {
-                foreach(var point in _stopPointsService.StopPoints)
+                foreach (var point in _stopPointsService.StopPoints)
                 {
                     Pins.Add(
                         new Pin
                         {
                             Label = point.Name,
                             Position = new Position(point.Latitude, point.Longitude)
-                        
+
                         }
                     );
                 }
