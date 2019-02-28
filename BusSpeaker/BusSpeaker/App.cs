@@ -30,10 +30,16 @@ namespace BusSpeaker
             FreshIOC.Container.Register<ISimpleAudioPlayer>(CrossSimpleAudioPlayer.Current);
 
             var tabbedNavigation = new FreshTabbedNavigationContainer(Guid.NewGuid().ToString());
+            try
+            {
+                tabbedNavigation.AddTab<RoutePageModel>("Route", null); // ios exeption
+                tabbedNavigation.AddTab<MapPageModel>("Map", null);
+                tabbedNavigation.AddTab<SettingsPageModel>("Settings", null);
+            }
+            catch(Exception e)
+            {
 
-            tabbedNavigation.AddTab<RoutePageModel>("Route", null); // ios exeption
-            tabbedNavigation.AddTab<MapPageModel>("Map", null);
-            tabbedNavigation.AddTab<SettingsPageModel>("Settings", null);
+            }
 
 
             MainPage = tabbedNavigation;

@@ -42,7 +42,6 @@ namespace BusSpeaker.PageModels
                         {
                             Label = point.Name,
                             Position = new Position(point.Latitude, point.Longitude)
-
                         }
                     );
                 }

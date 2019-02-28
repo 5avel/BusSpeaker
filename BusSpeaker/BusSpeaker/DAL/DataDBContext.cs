@@ -14,7 +14,11 @@ namespace BusSpeaker.DAL
      
         private readonly string _databasePath;
 
-        public DBContext()
+
+        public DbSet<Rout> Routs { get; set; }
+        public DbSet<StopPoint> StopPoints { get; set; }
+
+        public DBContext(string databasePath)
         {
             _databasePath = DependencyService.Get<ISQLite>().GetDatabasePath(dbName);
             //Database.EnsureDeleted();
@@ -47,7 +51,5 @@ namespace BusSpeaker.DAL
         }
 
 
-        public DbSet<Rout> Routs { get; set; }
-        public DbSet<StopPoint> StopPoints { get; set; }
     }
 }
