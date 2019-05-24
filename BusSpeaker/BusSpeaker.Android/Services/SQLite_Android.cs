@@ -17,7 +17,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(SQLite_Android))]
 namespace BusSpeaker.Droid.Services
 {
-    public class SQLite_Android : ISQLite
+    public class SQLite_Android : ISqLite
     {
         public SQLite_Android() { }
         public string GetDatabasePath(string sqliteFilename)

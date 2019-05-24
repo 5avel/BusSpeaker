@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BusSpeaker.Services.Intefaces
+﻿namespace BusSpeaker.Services.Intefaces
 {
-    public interface ISQLite
+    public interface ISqLite
     {
         string GetDatabasePath(string filename);
     }

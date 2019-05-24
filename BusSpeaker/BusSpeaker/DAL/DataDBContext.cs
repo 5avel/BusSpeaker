@@ -20,7 +20,7 @@ namespace BusSpeaker.DAL
 
         public DBContext(string databasePath)
         {
-            _databasePath = DependencyService.Get<ISQLite>().GetDatabasePath(dbName);
+            _databasePath = DependencyService.Get<ISqLite>().GetDatabasePath(dbName);
             //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
