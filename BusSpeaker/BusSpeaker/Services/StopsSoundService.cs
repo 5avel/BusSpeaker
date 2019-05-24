@@ -1,10 +1,7 @@
 ﻿using BusSpeaker.Services.Intefaces;
 using Plugin.SimpleAudioPlayer;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Text;
 
 namespace BusSpeaker.Services
 {

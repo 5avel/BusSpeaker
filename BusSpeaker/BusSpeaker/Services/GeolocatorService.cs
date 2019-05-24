@@ -20,7 +20,7 @@ namespace BusSpeaker.Services
             if (CrossGeolocator.Current.IsListening)
                 return;
 
-            await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(2), 5, false);
+            await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(2), 5);
 
             CrossGeolocator.Current.PositionChanged += PositionChanged;
             

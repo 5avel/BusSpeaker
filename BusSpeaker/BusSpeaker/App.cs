@@ -13,7 +13,7 @@ using Xamarin.Forms.Xaml;
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace BusSpeaker
 {
-    public partial class App : Application
+    public class App : Application
     {
         public App()
         {
@@ -27,7 +27,7 @@ namespace BusSpeaker
             FreshIOC.Container.Register<IStopPointsService, StopPointsService>();
             FreshIOC.Container.Register<IStopsSoundService, StopsSoundService>();
 
-            FreshIOC.Container.Register<ISimpleAudioPlayer>(CrossSimpleAudioPlayer.Current);
+            FreshIOC.Container.Register(CrossSimpleAudioPlayer.Current);
 
             var tabbedNavigation = new FreshTabbedNavigationContainer(Guid.NewGuid().ToString());
             try
@@ -36,9 +36,9 @@ namespace BusSpeaker
                 tabbedNavigation.AddTab<MapPageModel>("Map", null);
                 tabbedNavigation.AddTab<SettingsPageModel>("Settings", null);
             }
-            catch(Exception e)
+            catch (Exception)
             {
-
+                // ignored
             }
 
 
